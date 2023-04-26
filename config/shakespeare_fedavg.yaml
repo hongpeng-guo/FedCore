@@ -1,0 +1,50 @@
+common_args:
+  training_type: "simulation"
+  random_seed: 1
+  config_version: release
+
+data_args:
+  dataset: "shakespeare"
+  data_cache_dir: ~/fedml_data
+  partition_method: "hetero"
+  partition_alpha: 0.5
+  stragglers_percent: 50
+  data_compute_correlation: 0.5
+
+model_args:
+  model: "rnn"
+
+train_args:
+  federated_optimizer: "FedAvg"
+  client_id_list: "[]"
+  client_num_in_total: 143
+  client_num_per_round: 10
+  comm_round: 40
+  epochs: 5
+  batch_size: 8
+  client_optimizer: sgd
+  learning_rate: 0.03
+  weight_decay: 0.001
+  fedprox_mu: 0.0
+  drop_stragglers: false
+
+validation_args:
+  frequency_of_the_test: 1
+
+device_args:
+  using_gpu: true
+  gpu_id: 0
+
+comm_args:
+  backend: "sp"
+
+tracking_args:
+  # When running on MLOps platform(open.fedml.ai), the default log path is at ~/fedml-client/fedml/logs/ and ~/fedml-server/fedml/logs/
+  enable_tracking: false
+  enable_wandb: false
+  log_file_dir: ./log
+  mlops_api_key: 0433f1a15fc54ba3bedd389e41524f73
+  mlops_project_name: simulation
+  mlops_run_name: fedavg_shakespeare_rnn
+  record_dir: ./log
+  record_file: fedavg_shakespeare_rnn
