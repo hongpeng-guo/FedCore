@@ -1,4 +1,4 @@
-# FedCore: Straggler-Free Federated Learning withDistributed Core-sets
+# FedCore: Straggler-Free Federated Learning with Distributed Core-sets
 
 ## Installation
 
